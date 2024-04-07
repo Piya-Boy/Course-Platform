@@ -2,5 +2,7 @@
 import { Toaster } from "react-hot-toast";
 
 export const ToasterProvider = () => {
-    return <Toaster/>
+    return <Toaster
+        position="bottom-left"
+    />
 }
