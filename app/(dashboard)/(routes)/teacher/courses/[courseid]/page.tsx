@@ -1,13 +1,14 @@
 import { IconBadge } from "@/components/icon-badge";
 import {db} from "@/lib/db";
 import { auth } from "@clerk/nextjs";
-import { CircleDollarSign, LayoutDashboard, ListChecks } from "lucide-react";
+import { CircleDollarSign, File, LayoutDashboard, ListChecks } from "lucide-react";
 import { redirect } from "next/navigation";
 import { TitleForm } from "./_componets/title-form";
 import { DescriptionForm } from "./_componets/description-form";
 import { ImageForm } from "./_componets/image-form";
 import { CategoryForm } from "./_componets/category-form";
 import { PriceForm } from "./_componets/price-form";
+import { AttachmentForm } from "./_componets/attachment-form";
 
 
 const CourseIdPage = async ({ params }: { params: { courseid: string } }) => {
@@ -20,9 +21,18 @@ const CourseIdPage = async ({ params }: { params: { courseid: string } }) => {
 
   const course = await db.course.findUnique({
     where: {
-      id: params.courseid
-    }
+      id: params.courseid,
+    },
+    include: {
+      attachments: {
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
+    },
   });
+
+  // console.log(course)
 
   const categories = await db.category.findMany({
     orderBy: {
@@ -70,7 +80,7 @@ const CourseIdPage = async ({ params }: { params: { courseid: string } }) => {
             initialData={course}
             courseId={course.id}
             options={categories.map((category) => ({
-              label: category.name, 
+              label: category.name,
               value: category.id,
             }))}
           />
@@ -81,9 +91,7 @@ const CourseIdPage = async ({ params }: { params: { courseid: string } }) => {
               <IconBadge icon={ListChecks} />
               <h2 className="text-xl">Course chapters</h2>
             </div>
-            <div className="">
-              TODO: Chapters
-            </div>
+            <div className="">TODO: Chapters</div>
           </div>
           <div>
             <div className="flex items-center gap-x-2">
@@ -91,6 +99,13 @@ const CourseIdPage = async ({ params }: { params: { courseid: string } }) => {
               <h2 className="text-xl">Sell your course</h2>
             </div>
             <PriceForm initialData={course} courseId={course.id} />
+          </div>
+          <div>
+            <div className="flex items-center gap-x-2">
+              <IconBadge icon={File} />
+              <h2 className="text-xl">Resources & Attachments</h2>
+            </div>
+            <AttachmentForm initialData={course} courseId={course.id} />
           </div>
         </div>
       </div>
