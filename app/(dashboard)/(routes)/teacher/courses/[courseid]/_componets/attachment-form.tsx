@@ -90,6 +90,7 @@ export const AttachmentForm = ({
                 </div>
               )}
               {deletingId !== attachment.id && (
+                
                 <button
                   onClick={() => onDelete(attachment.id)}
                   className="ml-auto hover:opacity-75 transition"
