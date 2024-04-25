@@ -1,12 +1,12 @@
 "use client";
 import * as React from "react";
 import {
-    ColumnDef,
-    ColumnFiltersState,
-    SortingState,
+  ColumnDef,
+  ColumnFiltersState,
+  SortingState,
   flexRender,
-    getCoreRowModel,
-    getFilteredRowModel,
+  getCoreRowModel,
+  getFilteredRowModel,
   getSortedRowModel,
   getExpandedRowModel,
   useReactTable,
@@ -35,9 +35,9 @@ export function DataTable<TData, TValue>({
   data,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
-const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-  []
-);
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  );
 
   const table = useReactTable({
     data,
@@ -49,9 +49,9 @@ const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     state: {
-        sorting,
-        columnFilters,
-      }
+      sorting,
+      columnFilters,
+    },
   });
 
   return (
@@ -65,9 +65,7 @@ const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
           }
           className="max-w-sm"
         />
-        <Link
-          href="/teacher/create"
-        >
+        <Link href="/teacher/create">
           <Button>
             <PlusCircle className="h-4 w-4 mr-2" />
             New Course
