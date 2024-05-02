@@ -9,9 +9,9 @@ export async function POST(
     { params }: { params: { courseid: string } }
 ) {
     try {
-      const user = await currentUser();
-
-        if(!user || !user.id || !user.emailAddresses[0].emailAddress) {
+        const user = await currentUser();
+        
+        if(!user || !user.id || !user.emailAddresses?.[0]?.emailAddress) {
             return new NextResponse("Unauthorized", { status: 401 });
         }
 

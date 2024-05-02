@@ -13,7 +13,7 @@ const CourseIdPage = async ({
     include: {
       chapters: {
         where: {
-          isPublished: true
+          isPublished: true,
         },
         orderBy: {
           position: 'asc'
