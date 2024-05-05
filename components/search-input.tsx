@@ -1,4 +1,3 @@
-"use client";
 import qs from "query-string";
 import { Search } from "lucide-react";
 import { Input } from "./ui/input";
@@ -9,7 +8,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 export const SearchInput = () => { 
 
     const [value, setValue] = useState("");
-    const debouncedValue = useDebounce(value);
+    const debouncedValue = useDebounce(value, 300);
 
     const searchParams = useSearchParams();
     const router = useRouter();
