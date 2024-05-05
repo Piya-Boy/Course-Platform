@@ -110,9 +110,6 @@ export const ChapterAccessForm = ({
                 <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-sm border p-4">
                   <FormControl>
                     <Checkbox
-                      // {...field}
-
-
                       checked={field.value}
                       onCheckedChange={field.onChange}
                     />
@@ -126,6 +123,7 @@ export const ChapterAccessForm = ({
                 </FormItem>
               )}
             />
+
             <div className="flex items-center gap-x-2">
               <Button disabled={!isValid || isSubmitting} type="submit">
                 Save
