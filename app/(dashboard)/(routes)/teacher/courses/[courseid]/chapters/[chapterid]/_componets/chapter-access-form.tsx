@@ -111,6 +111,8 @@ export const ChapterAccessForm = ({
                   <FormControl>
                     <Checkbox
                       // {...field}
+
+
                       checked={field.value}
                       onCheckedChange={field.onChange}
                     />
