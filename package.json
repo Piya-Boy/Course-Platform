@@ -2,12 +2,17 @@
   "name": "online-platform",
   "version": "0.1.0",
   "private": true,
+  "prisma": {
+    "seed": "node scripts/seed.js"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "db": "prisma db push",
+   "migrate": "prisma migrate dev"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.10",
