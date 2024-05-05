@@ -110,7 +110,7 @@ export const ChapterAccessForm = ({
                 <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-sm border p-4">
                   <FormControl>
                     <Checkbox
-                      {...field}
+                      // {...field}
                       checked={field.value}
                       onCheckedChange={field.onChange}
                     />
