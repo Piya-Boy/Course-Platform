@@ -7,12 +7,12 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && prisma generate && prisma db push && node scripts/seed.js",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
     "db": "prisma db push",
-    "seed": "node scripts/seed.js"
+    "migrate": "prisma migrate dev"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.10",
